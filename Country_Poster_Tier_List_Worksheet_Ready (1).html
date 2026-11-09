@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="neon_noir">
+  <title>Country Poster Tier List Worksheet</title>
+
+  <!-- Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      /* Page & Surface Tokens (Neon Noir) */
+      --background: #0a0a12;
+      --surface-container-low: #111118;
+      --surface-container: #141422;
+      --surface-container-high: #1e1e30;
+      --surface-container-highest: #28283e;
+
+      /* Typography Tokens */
+      --on-surface: #e8e0f0;
+      --on-surface-variant: #a098b0;
+      --on-surface-muted: #6e6680;
+
+      /* Outline & Dividers */
+      --outline: #5a5068;
+      --outline-variant: #302840;
+
+      /* Accents */
+      --primary: #ff2d78;
+      --on-primary: #1a0010;
+      --primary-container: #b3004e;
+      --on-primary-container: #ffe0ec;
+      --secondary: #00ffcc;
+      --on-secondary: #00261e;
+      --tertiary: #ffe04a;
+      --on-tertiary: #241c00;
+      --error: #ff4444;
+      --on-error: #1a0000;
+      --positive: #10b981;
+      --warning: #f59e0b;
+      --focus: #00ffcc;
+
+      /* Color Primitives */
+      --color-white: #ffffff;
+      --color-black: #000000;
+      --color-translucent-white-05: rgba(255, 255, 255, 0.05);
+      --color-translucent-white-10: rgba(255, 255, 255, 0.1);
+      --color-translucent-white-15: rgba(255, 255, 255, 0.15);
+      --color-translucent-white-20: rgba(255, 255, 255, 0.2);
+      --color-translucent-black-40: rgba(0, 0, 0, 0.4);
+      --color-translucent-black-60: rgba(0, 0, 0, 0.6);
+      --color-translucent-black-80: rgba(0, 0, 0, 0.8);
+
+      /* Tier List Colors (S to F: Gold, Green, Blue, Purple, Pink, Orange, Red) */
+      --tier-s-bg: #f59e0b;
+      --tier-s-text: #1a1100;
+      --tier-s-row-bg: rgba(245, 158, 11, 0.06);
+      --tier-s-border: rgba(245, 158, 11, 0.35);
+      --tier-s-glow: rgba(245, 158, 11, 0.25);
+
+      --tier-a-bg: #10b981;
+      --tier-a-text: #011f14;
+      --tier-a-row-bg: rgba(16, 185, 129, 0.06);
+      --tier-a-border: rgba(16, 185, 129, 0.35);
+      --tier-a-glow: rgba(16, 185, 129, 0.25);
+
+      --tier-b-bg: #0284c7;
+      --tier-b-text: #011726;
+      --tier-b-row-bg: rgba(2, 132, 199, 0.06);
+      --tier-b-border: rgba(2, 132, 199, 0.35);
+      --tier-b-glow: rgba(2, 132, 199, 0.25);
+
+      --tier-c-bg: #8b5cf6;
+      --tier-c-text: #ffffff;
+      --tier-c-row-bg: rgba(139, 92, 246, 0.06);
+      --tier-c-border: rgba(139, 92, 246, 0.35);
+      --tier-c-glow: rgba(139, 92, 246, 0.25);
+
+      --tier-d-bg: #ec4899;
+      --tier-d-text: #ffffff;
+      --tier-d-row-bg: rgba(236, 72, 153, 0.06);
+      --tier-d-border: rgba(236, 72, 153, 0.35);
+      --tier-d-glow: rgba(236, 72, 153, 0.25);
+
+      --tier-e-bg: #f97316;
+      --tier-e-text: #ffffff;
+      --tier-e-row-bg: rgba(249, 115, 22, 0.06);
+      --tier-e-border: rgba(249, 115, 22, 0.35);
+      --tier-e-glow: rgba(249, 115, 22, 0.25);
+
+      --tier-f-bg: #ef4444;
+      --tier-f-text: #ffffff;
+      --tier-f-row-bg: rgba(239, 68, 68, 0.06);
+      --tier-f-border: rgba(239, 68, 68, 0.35);
+      --tier-f-glow: rgba(239, 68, 68, 0.25);
+
+      /* Category Badges */
+      --cat-essential-bg: rgba(0, 255, 204, 0.12);
+      --cat-essential-border: rgba(0, 255, 204, 0.4);
+      --cat-essential-text: #00ffcc;
+
+      --cat-food-bg: rgba(245, 158, 11, 0.12);
+      --cat-food-border: rgba(245, 158, 11, 0.4);
+      --cat-food-text: #fbbf24;
+
+      --cat-culture-bg: rgba(179, 136, 255, 0.12);
+      --cat-culture-border: rgba(179, 136, 255, 0.4);
+      --cat-culture-text: #c084fc;
+
+      /* Drag States */
+      --drag-over-bg: rgba(0, 255, 204, 0.08);
+      --drag-over-border: #00ffcc;
+      --drag-over-shadow: 0 0 16px rgba(0, 255, 204, 0.3);
+
+      /* Fonts */
+      --font-headline: 'Sora', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-label: 'Space Mono', monospace;
+
+      /* Sizing & Typography Scale */
+      --display-size: clamp(1.75rem, 1.35rem + 1.25vw, 2.35rem);
+      --headline-size: clamp(1.2rem, 1.05rem + 0.55vw, 1.45rem);
+      --subhead-size: clamp(1.02rem, 0.95rem + 0.25vw, 1.15rem);
+      --body-size: clamp(0.92rem, 0.88rem + 0.15vw, 0.98rem);
+      --label-size: 0.75rem;
+
+      /* Spacing Scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Radii */
+      --rounded: 0.25rem;
+      --rounded-md: 0.375rem;
+      --rounded-lg: 0.5rem;
+      --rounded-full: 9999px;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+
+      /* Effects & Shadows */
+      --glow-text: 0 0 8px currentColor;
+      --glow-primary: 0 0 16px rgba(255, 45, 120, 0.4);
+      --glow-secondary: 0 0 16px rgba(0, 255, 204, 0.35);
+      --neon-border: 1px solid rgba(255, 45, 120, 0.3);
+      --neon-border-lit: 1px solid rgba(255, 45, 120, 0.6);
+      --neon-inset: inset 0 0 12px rgba(255, 45, 120, 0.1);
+      --scanlines: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(232, 224, 240, 0.02) 3px 4px);
+      --shadow-input-focus: 0 0 10px rgba(0, 255, 204, 0.3);
+      --shadow-tier-inset: inset 0 0 10px rgba(0, 0, 0, 0.2);
+      --shadow-chip-active: 0 0 8px rgba(255, 45, 120, 0.4);
+      --shadow-card-hover: 0 4px 14px rgba(0, 255, 204, 0.2);
+      --shadow-modal: 0 0 24px rgba(0, 255, 204, 0.3);
+    }
+
+    /* Base Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      background-image: var(--scanlines);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      position: static !important;
+    }
+
+    /* Layout Container */
+    .page-grid {
+      display: grid;
+      gap: var(--space-lg);
+      padding: var(--space-md);
+      max-width: 1300px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * {
+      min-width: 0;
+    }
+
+    /* Accessibility Focus Outline */
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Header & Mission Banner */
+    .header-panel {
+      background: var(--surface-container);
+      border: var(--neon-border);
+      box-shadow: var(--neon-inset);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--secondary);
+      text-shadow: var(--glow-text);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-xs);
+    }
+
+    .header-title {
+      font-family: var(--font-headline);
+      font-size: var(--display-size);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 0 0 var(--space-xs) 0;
+      color: var(--on-surface);
+    }
+
+    .header-title span.accent-pink {
+      color: var(--primary);
+      text-shadow: var(--glow-primary);
+    }
+
+    .header-title span.accent-cyan {
+      color: var(--secondary);
+      text-shadow: var(--glow-secondary);
+    }
+
+    .header-desc {
+      color: var(--on-surface-variant);
+      font-size: var(--subhead-size);
+      max-width: 78ch;
+      margin: 0 0 var(--space-md) 0;
+    }
+
+    /* Project Setup Card: Student & Country Inputs */
+    .profile-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-md);
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .input-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-variant);
+      font-weight: 700;
+    }
+
+    .text-input, .select-input {
+      background: var(--surface-container);
+      border: 1px solid var(--outline);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      transition: border-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+      width: 100%;
+    }
+
+    .text-input:focus, .select-input:focus {
+      border-color: var(--focus);
+      box-shadow: var(--shadow-input-focus);
+      outline: none;
+    }
+
+    /* Tier List Board Container */
+    .tier-board-section {
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .section-header-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+
+    .section-title {
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 700;
+      margin: 0;
+      color: var(--on-surface);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .section-tagline {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+
+    .btn-action {
+      background: var(--surface-container-high);
+      color: var(--on-surface);
+      border: 1px solid var(--outline);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: all var(--dur-short) var(--ease-out);
+    }
+
+    .btn-action:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      box-shadow: var(--glow-secondary);
+    }
+
+    .btn-action.btn-accent {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-action.btn-accent:hover {
+      background: var(--primary-container);
+      color: var(--color-white);
+      box-shadow: var(--glow-primary);
+    }
+
+    /* Gaming Tier List Rows */
+    .tier-list-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      border: 2px solid var(--outline-variant);
+      border-radius: var(--rounded-md);
+      overflow: hidden;
+      background: var(--color-black);
+    }
+
+    .tier-row {
+      display: flex;
+      min-height: 96px;
+      background: var(--surface-container-low);
+      border-bottom: 1px solid var(--outline-variant);
+      transition: background-color var(--dur-short) var(--ease-out);
+    }
+
+    .tier-row:last-child {
+      border-bottom: none;
+    }
+
+    /* Tier Label Badges (Left Column) */
+    .tier-label-cell {
+      width: 110px;
+      min-width: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-sm);
+      text-align: center;
+      user-select: none;
+      font-weight: 800;
+      position: relative;
+    }
+
+    .tier-letter {
+      font-family: var(--font-headline);
+      font-size: 2.25rem;
+      line-height: 1;
+      font-weight: 800;
+      margin-bottom: var(--space-xs);
+    }
+
+    .tier-meaning {
+      font-family: var(--font-label);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      opacity: 0.95;
+    }
+
+    /* Exact Tier Colors */
+    .tier-row[data-tier="S"] .tier-label-cell {
+      background-color: var(--tier-s-bg);
+      color: var(--tier-s-text);
+      box-shadow: var(--shadow-tier-inset);
+    }
+    .tier-row[data-tier="S"] {
+      border-left: 4px solid var(--tier-s-bg);
+    }
+
+    .tier-row[data-tier="A"] .tier-label-cell {
+      background-color: var(--tier-a-bg);
+      color: var(--tier-a-text);
+      box-shadow: var(--shadow-tier-inset);
+    }
+    .tier-row[data-tier="A"] {
+      border-left: 4px solid var(--tier-a-bg);
+    }
+
+    .tier-row[data-tier="B"] .tier-label-cell {
+      background-color: var(--tier-b-bg);
+      color: var(--tier-b-text);
+      box-shadow: var(--shadow-tier-inset);
+    }
+    .tier-row[data-tier="B"] {
+      border-left: 4px solid var(--tier-b-bg);
+    }
+
+    .tier-row[data-tier="C"] .tier-label-cell {
+      background-color: var(--tier-c-bg);
+      color: var(--tier-c-text);
+      box-shadow: var(--shadow-tier-inset);
+    }
+    .tier-row[data-tier="C"] {
+      border-left: 4px solid var(--tier-c-bg);
+    }
+
+    .tier-row[data-tier="D"] .tier-label-cell {
+      background-color: var(--tier-d-bg);
+      color: var(--tier-d-text);
+      box-shadow: var(--shadow-tier-inset);
+    }
+    .tier-row[data-tier="D"] {
+      border-left: 4px solid var(--tier-d-bg);
+    }
+
+    .tier-row[data-tier="E"] .tier-label-cell {
+      background-color: var(--tier-e-bg);
+      color: var(--tier-e-text);
+      box-shadow: var(--shadow-tier-inset);
+    }
+    .tier-row[data-tier="E"] {
+      border-left: 4px solid var(--tier-e-bg);
+    }
+
+    .tier-row[data-tier="F"] .tier-label-cell {
+      background-color: var(--tier-f-bg);
+      color: var(--tier-f-text);
+      box-shadow: var(--shadow-tier-inset);
+    }
+    .tier-row[data-tier="F"] {
+      border-left: 4px solid var(--tier-f-bg);
+    }
+
+    /* Tier Drop Slot */
+    .tier-drop-zone {
+      flex: 1;
+      min-height: 96px;
+      padding: var(--space-sm);
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: var(--space-sm);
+      background: var(--surface-container-low);
+      transition: background-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+    }
+
+    .tier-drop-zone.drag-active {
+      background-color: var(--drag-over-bg);
+      box-shadow: inset 0 0 15px var(--drag-over-shadow);
+      outline: 2px dashed var(--drag-over-border);
+      outline-offset: -2px;
+    }
+
+    .tier-drop-zone:empty::before {
+      content: attr(data-placeholder);
+      color: var(--on-surface-muted);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      padding: var(--space-md);
+      opacity: 0.6;
+    }
+
+    /* Unranked Pool Section */
+    .pool-section {
+      background: var(--surface-container);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .pool-drop-zone {
+      min-height: 120px;
+      padding: var(--space-sm);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-content: flex-start;
+      background: var(--surface-container-low);
+      border: 1px dashed var(--outline);
+      border-radius: var(--rounded-md);
+      transition: all var(--dur-short) var(--ease-out);
+    }
+
+    .pool-drop-zone.drag-active {
+      background-color: var(--drag-over-bg);
+      border-color: var(--secondary);
+    }
+
+    .pool-drop-zone:empty::before {
+      content: 'All 12 elements currently ranked in tiers above! Drag or reassign any card back here if unranked.';
+      color: var(--on-surface-muted);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: var(--space-lg);
+      text-align: center;
+    }
+
+    /* Filter Chips */
+    .filter-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .filter-chip {
+      background: var(--surface-container-high);
+      color: var(--on-surface-variant);
+      border: 1px solid var(--outline-variant);
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--rounded-full);
+      cursor: pointer;
+      transition: all var(--dur-micro) var(--ease-out);
+    }
+
+    .filter-chip:hover {
+      color: var(--on-surface);
+      border-color: var(--outline);
+    }
+
+    .filter-chip.active {
+      background: var(--primary-container);
+      color: var(--color-white);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-chip-active);
+    }
+
+    /* Rankable Element Card */
+    .element-card {
+      width: 215px;
+      background: var(--surface-container);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded-md);
+      padding: var(--space-sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      cursor: grab;
+      user-select: none;
+      position: relative;
+      transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+    }
+
+    .element-card:hover {
+      border-color: var(--secondary);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .element-card:active {
+      cursor: grabbing;
+      transform: scale(0.98);
+    }
+
+    .element-card.is-dragging {
+      opacity: 0.4;
+      border-style: dashed;
+      border-color: var(--primary);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-xs);
+    }
+
+    .card-category-tag {
+      font-family: var(--font-label);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.1rem 0.35rem;
+      border-radius: var(--rounded);
+      font-weight: 700;
+    }
+
+    .card-category-tag.cat-essential {
+      background: var(--cat-essential-bg);
+      border: 1px solid var(--cat-essential-border);
+      color: var(--cat-essential-text);
+    }
+
+    .card-category-tag.cat-food {
+      background: var(--cat-food-bg);
+      border: 1px solid var(--cat-food-border);
+      color: var(--cat-food-text);
+    }
+
+    .card-category-tag.cat-culture {
+      background: var(--cat-culture-bg);
+      border: 1px solid var(--cat-culture-border);
+      color: var(--cat-culture-text);
+    }
+
+    .card-btn-info {
+      background: transparent;
+      border: none;
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--rounded);
+      transition: color var(--dur-micro) var(--ease-out);
+    }
+
+    .card-btn-info:hover {
+      color: var(--secondary);
+    }
+
+    .card-main {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .card-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--rounded);
+      background: var(--surface-container-high);
+      border: 1px solid var(--outline-variant);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--on-surface);
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-family: var(--font-headline);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .card-desc {
+      font-size: 0.74rem;
+      color: var(--on-surface-variant);
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .card-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-xs);
+      margin-top: auto;
+      padding-top: var(--space-xs);
+      border-top: 1px solid var(--outline-variant);
+    }
+
+    .card-tier-select {
+      background: var(--surface-container-high);
+      border: 1px solid var(--outline);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: 0.7rem;
+      padding: 0.15rem 0.35rem;
+      border-radius: var(--rounded);
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .card-tier-select:focus {
+      border-color: var(--focus);
+      outline: none;
+    }
+
+    /* Strategy & Curriculum Health Dashboard */
+    .dashboard-panel {
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .stat-tile {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-md);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      position: relative;
+    }
+
+    .stat-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-variant);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stat-number {
+      font-family: var(--font-headline);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--on-surface);
+      line-height: 1.1;
+    }
+
+    .stat-number.is-highlight {
+      color: var(--secondary);
+      text-shadow: var(--glow-secondary);
+    }
+
+    .stat-number.is-warning {
+      color: var(--warning);
+    }
+
+    .stat-number.is-pink {
+      color: var(--primary);
+      text-shadow: var(--glow-primary);
+    }
+
+    .stat-progress-bar {
+      height: 6px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+      margin-top: var(--space-xs);
+    }
+
+    .stat-progress-fill {
+      height: 100%;
+      background: var(--secondary);
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+
+    .stat-caption {
+      font-size: 0.78rem;
+      color: var(--on-surface-variant);
+      line-height: 1.35;
+    }
+
+    /* Written Justification Worksheet */
+    .worksheet-panel {
+      background: var(--surface-container);
+      border: var(--neon-border);
+      box-shadow: var(--neon-inset);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .question-block {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-md);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .question-header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    .question-badge {
+      background: var(--primary-container);
+      color: var(--color-white);
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--rounded);
+      flex-shrink: 0;
+    }
+
+    .question-title {
+      font-family: var(--font-headline);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .question-hint {
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    .textarea-field {
+      background: var(--surface-container);
+      border: 1px solid var(--outline);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      padding: var(--space-sm);
+      border-radius: var(--rounded);
+      min-height: 90px;
+      resize: vertical;
+      line-height: 1.5;
+      width: 100%;
+      transition: border-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+    }
+
+    .textarea-field:focus {
+      border-color: var(--focus);
+      box-shadow: var(--shadow-input-focus);
+      outline: none;
+    }
+
+    /* Modal / Dialog */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: var(--color-translucent-black-80);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-short) var(--ease-out);
+    }
+
+    .modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: var(--surface-container);
+      border: 1px solid var(--secondary);
+      box-shadow: var(--shadow-modal);
+      border-radius: var(--rounded-lg);
+      max-width: 620px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--outline-variant);
+      padding-bottom: var(--space-sm);
+    }
+
+    .modal-title {
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      padding: var(--space-xs);
+      border-radius: var(--rounded);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--dur-micro) var(--ease-out);
+    }
+
+    .modal-close-btn:hover {
+      color: var(--primary);
+    }
+
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      color: var(--on-surface-variant);
+      font-size: 0.9rem;
+    }
+
+    .modal-section-title {
+      font-family: var(--font-headline);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin: var(--space-xs) 0 0.2rem 0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .modal-list {
+      margin: 0;
+      padding-left: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .modal-footer {
+      border-top: 1px solid var(--outline-variant);
+      padding-top: var(--space-sm);
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-sm);
+    }
+
+    /* Print View Adjustments */
+    @media print {
+      body {
+        background: var(--color-white) !important;
+        color: var(--color-black) !important;
+        background-image: none !important;
+      }
+      .page-grid {
+        max-width: 100% !important;
+        padding: 0 !important;
+        gap: 1rem !important;
+      }
+      .header-panel, .tier-board-section, .pool-section, .dashboard-panel, .worksheet-panel {
+        background: var(--color-white) !important;
+        color: var(--color-black) !important;
+        border: 1px solid var(--color-black) !important;
+        box-shadow: none !important;
+      }
+      .toolbar-actions, .filter-chips-row, .card-controls, .modal-backdrop {
+        display: none !important;
+      }
+      .tier-row {
+        background: var(--color-white) !important;
+        border-bottom: 1px solid var(--color-black) !important;
+        page-break-inside: avoid;
+      }
+      .element-card {
+        background: var(--color-white) !important;
+        color: var(--color-black) !important;
+        border: 1px solid var(--color-black) !important;
+        box-shadow: none !important;
+        transform: none !important;
+      }
+      .text-input, .select-input, .textarea-field {
+        background: var(--color-white) !important;
+        color: var(--color-black) !important;
+        border: 1px solid var(--color-black) !important;
+      }
+    }
+
+    /* Responsive Mobile Breakpoint */
+    @media (max-width: 768px) {
+      .tier-row {
+        flex-direction: column;
+      }
+      .tier-label-cell {
+        width: 100%;
+        min-width: 100%;
+        height: 48px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: var(--space-xs) var(--space-md);
+      }
+      .tier-letter {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+      }
+      .element-card {
+        width: 100%;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-grid">
+
+    <!-- Header Panel -->
+    <header class="header-panel">
+      <div class="kicker">
+        <i data-lucide="compass" style="width: 14px; height: 14px;"></i>
+        <span>English-Speaking World // Poster Planning Worksheet</span>
+      </div>
+      <h1 class="header-title">
+        Country Poster <span class="accent-pink">Tier List</span> <span class="accent-cyan">Studio</span>
+      </h1>
+      <p class="header-desc">
+        Your challenge: Design an attractive, informative digital poster for an English-speaking country that makes viewers want to visit! Rank the 12 poster elements below from <strong>S-Tier</strong> (Essential) to <strong>F-Tier</strong> (Skip) to build your ultimate design strategy.
+      </p>
+
+      <!-- Student & Country Setup Inputs -->
+      <div class="profile-strip">
+        <div class="input-group">
+          <label class="input-label" for="input-student-name">Student Name</label>
+          <input type="text" id="input-student-name" class="text-input" placeholder="e.g. Alex Morgan" oninput="saveUserData()">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="input-class-period">Class / Period</label>
+          <input type="text" id="input-class-period" class="text-input" placeholder="e.g. English 10, Period 3" oninput="saveUserData()">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="select-country">Chosen English-Speaking Country</label>
+          <select id="select-country" class="select-input" onchange="handleCountryChange()">
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="South Africa">South Africa</option>
+            <option value="India">India</option>
+            <option value="Jamaica">Jamaica</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Other">Other English-Speaking Country</option>
+          </select>
+        </div>
+
+        <div class="input-group" id="group-custom-country" style="display: none;">
+          <label class="input-label" for="input-custom-country">Specify Country</label>
+          <input type="text" id="input-custom-country" class="text-input" placeholder="e.g. Ghana, Trinidad &amp; Tobago" oninput="saveUserData()">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="select-poster-angle">Poster Focus / Theme</label>
+          <select id="select-poster-angle" class="select-input" onchange="saveUserData()">
+            <option value="Tourism & Discovery">Tourism &amp; Discovery (Invitational)</option>
+            <option value="Cultural Deep-Dive">Cultural Heritage &amp; Traditions</option>
+            <option value="Culinary & Lifestyle">Food, Gastronomy &amp; Lifestyle</option>
+            <option value="Nature & Landscapes">Natural Wonders &amp; Adventures</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tier List Board -->
+    <section class="tier-board-section" aria-label="Interactive Tier List Board">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">
+            <i data-lucide="layers" style="width: 20px; height: 20px; color: var(--secondary);"></i>
+            <span>Poster Elements Tier List</span>
+          </h2>
+          <div class="section-tagline">Drag cards or use the dropdown selector on each card to rank</div>
+        </div>
+
+        <div class="toolbar-actions">
+          <button type="button" class="btn-action" onclick="loadPreset('balanced')">
+            <i data-lucide="wand-2" style="width: 14px; height: 14px;"></i> Preset: Balanced
+          </button>
+          <button type="button" class="btn-action" onclick="loadPreset('culture')">
+            <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i> Preset: Culture-First
+          </button>
+          <button type="button" class="btn-action" onclick="resetToPool()">
+            <i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i> Reset to Pool
+          </button>
+          <button type="button" class="btn-action btn-accent" onclick="openRubricModal()">
+            <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> Project Guidelines
+          </button>
+        </div>
+      </div>
+
+      <!-- Gaming Tier Rows: S to F -->
+      <div class="tier-list-container" id="tier-list-board">
+
+        <!-- S Tier: Gold -->
+        <div class="tier-row" data-tier="S">
+          <div class="tier-label-cell">
+            <span class="tier-letter">S</span>
+            <span class="tier-meaning">Essential<br>(Must-Have)</span>
+          </div>
+          <div class="tier-drop-zone" id="zone-S" data-tier="S" data-placeholder="Drag S-Tier elements here (Top priority hooks)"
+               ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          </div>
+        </div>
+
+        <!-- A Tier: Green -->
+        <div class="tier-row" data-tier="A">
+          <div class="tier-label-cell">
+            <span class="tier-letter">A</span>
+            <span class="tier-meaning">High Priority<br>(Core Pillars)</span>
+          </div>
+          <div class="tier-drop-zone" id="zone-A" data-tier="A" data-placeholder="Drag A-Tier elements here (Strong cultural or food assets)"
+               ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          </div>
+        </div>
+
+        <!-- B Tier: Blue -->
+        <div class="tier-row" data-tier="B">
+          <div class="tier-label-cell">
+            <span class="tier-letter">B</span>
+            <span class="tier-meaning">Great Value<br>(Supporting)</span>
+          </div>
+          <div class="tier-drop-zone" id="zone-B" data-tier="B" data-placeholder="Drag B-Tier elements here (Valuable context &amp; variety)"
+               ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          </div>
+        </div>
+
+        <!-- C Tier: Purple -->
+        <div class="tier-row" data-tier="C">
+          <div class="tier-label-cell">
+            <span class="tier-letter">C</span>
+            <span class="tier-meaning">Situational<br>(If Space Permits)</span>
+          </div>
+          <div class="tier-drop-zone" id="zone-C" data-tier="C" data-placeholder="Drag C-Tier elements here (Secondary interest points)"
+               ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          </div>
+        </div>
+
+        <!-- D Tier: Pink -->
+        <div class="tier-row" data-tier="D">
+          <div class="tier-label-cell">
+            <span class="tier-letter">D</span>
+            <span class="tier-meaning">Low Priority<br>(Optional)</span>
+          </div>
+          <div class="tier-drop-zone" id="zone-D" data-tier="D" data-placeholder="Drag D-Tier elements here (Can be omitted if crowded)"
+               ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          </div>
+        </div>
+
+        <!-- E Tier: Orange -->
+        <div class="tier-row" data-tier="E">
+          <div class="tier-label-cell">
+            <span class="tier-letter">E</span>
+            <span class="tier-meaning">Clutter Risk<br>(Questionable)</span>
+          </div>
+          <div class="tier-drop-zone" id="zone-E" data-tier="E" data-placeholder="Drag E-Tier elements here (High risk of visual overcrowding)"
+               ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          </div>
+        </div>
+
+        <!-- F Tier: Red -->
+        <div class="tier-row" data-tier="F">
+          <div class="tier-label-cell">
+            <span class="tier-letter">F</span>
+            <span class="tier-meaning">Do Not Use<br>(Skip / Cut)</span>
+          </div>
+          <div class="tier-drop-zone" id="zone-F" data-tier="F" data-placeholder="Drag F-Tier elements here (Elements intentionally excluded)"
+               ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Unranked Elements Pool -->
+    <section class="pool-section" aria-label="Unranked Elements Pool">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">
+            <i data-lucide="package" style="width: 20px; height: 20px; color: var(--primary);"></i>
+            <span>Elements Pool (<span id="unranked-count">12</span> Unranked)</span>
+          </h2>
+          <div class="section-tagline">Assign all 12 cards to a tier above to complete your planning board</div>
+        </div>
+
+        <div class="filter-chips-row">
+          <span style="font-family: var(--font-label); font-size: 0.7rem; color: var(--on-surface-variant); margin-right: 4px;">FILTER:</span>
+          <button type="button" class="filter-chip active" onclick="filterCards('all', this)">All (12)</button>
+          <button type="button" class="filter-chip" onclick="filterCards('essential', this)">Essential Info (3)</button>
+          <button type="button" class="filter-chip" onclick="filterCards('food', this)">Food &amp; Drink (2)</button>
+          <button type="button" class="filter-chip" onclick="filterCards('culture', this)">Culture &amp; Arts (7)</button>
+        </div>
+      </div>
+
+      <div class="pool-drop-zone" id="zone-pool" data-tier="pool"
+           ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+        <!-- 12 Cards will be rendered here by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Strategic Readiness & Rubric Dashboard -->
+    <section class="dashboard-panel" aria-label="Poster Strategic Audit">
+      <!-- Stat 1: Total Ranked -->
+      <div class="stat-tile">
+        <div class="stat-label">
+          <span>Ranking Progress</span>
+          <i data-lucide="check-circle" style="width: 14px; height: 14px;"></i>
+        </div>
+        <div class="stat-number is-highlight" id="stat-progress-val">0 / 12</div>
+        <div class="stat-progress-bar">
+          <div class="stat-progress-fill" id="stat-progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="stat-caption" id="stat-progress-caption">Drag or select tiers for all 12 cards to finish.</div>
+      </div>
+
+      <!-- Stat 2: Cultural Elements Check (Requirement B: At least 3) -->
+      <div class="stat-tile">
+        <div class="stat-label">
+          <span>Culture Quota (Section B)</span>
+          <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+        </div>
+        <div class="stat-number" id="stat-culture-val">0 / 3</div>
+        <div class="stat-progress-bar">
+          <div class="stat-progress-fill" id="stat-culture-bar-fill" style="width: 0%; background-color: var(--cat-culture-text);"></div>
+        </div>
+        <div class="stat-caption" id="stat-culture-caption">Curriculum requirement: Present at least 3 cultural aspects in top tiers.</div>
+      </div>
+
+      <!-- Stat 3: Food & Gastronomy Check (Requirement C) -->
+      <div class="stat-tile">
+        <div class="stat-label">
+          <span>Gastronomy (Section C)</span>
+          <i data-lucide="utensils" style="width: 14px; height: 14px;"></i>
+        </div>
+        <div class="stat-number is-warning" id="stat-food-val">0 / 2</div>
+        <div class="stat-progress-bar">
+          <div class="stat-progress-fill" id="stat-food-bar-fill" style="width: 0%; background-color: var(--warning);"></div>
+        </div>
+        <div class="stat-caption" id="stat-food-caption">Dish &amp; drink: Highlight culinary traditions with sensory words.</div>
+      </div>
+
+      <!-- Stat 4: Essential Information Check (Requirement A) -->
+      <div class="stat-tile">
+        <div class="stat-label">
+          <span>Essential Info (Section A)</span>
+          <i data-lucide="landmark" style="width: 14px; height: 14px;"></i>
+        </div>
+        <div class="stat-number is-pink" id="stat-essential-val">0 / 3</div>
+        <div class="stat-progress-bar">
+          <div class="stat-progress-fill" id="stat-essential-bar-fill" style="width: 0%; background-color: var(--primary);"></div>
+        </div>
+        <div class="stat-caption" id="stat-essential-caption">Capital city, Flag, and Emblem anchor the viewer's geography.</div>
+      </div>
+    </section>
+
+    <!-- Written Reflection & Justification Worksheet -->
+    <section class="worksheet-panel" aria-label="Written Justification Worksheet">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">
+            <i data-lucide="file-text" style="width: 20px; height: 20px; color: var(--primary);"></i>
+            <span>Strategic Design Justification Worksheet</span>
+          </h2>
+          <div class="section-tagline">Complete these guided prompts to justify your poster decisions in English</div>
+        </div>
+
+        <div class="toolbar-actions">
+          <button type="button" class="btn-action" onclick="copyWorksheetSummary()">
+            <i data-lucide="copy" style="width: 14px; height: 14px;"></i> Copy Summary
+          </button>
+          <button type="button" class="btn-action" onclick="downloadWorksheetFile()">
+            <i data-lucide="download" style="width: 14px; height: 14px;"></i> Export Plan (.txt)
+          </button>
+          <button type="button" class="btn-action" onclick="window.print()">
+            <i data-lucide="printer" style="width: 14px; height: 14px;"></i> Print / PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Prompt 1: S-Tier Focus -->
+      <div class="question-block">
+        <div class="question-header">
+          <span class="question-badge">Q1</span>
+          <div>
+            <h3 class="question-title">S-Tier Visual Hook &amp; Tourist Appeal</h3>
+            <p class="question-hint">
+              Look at the elements you placed in <strong>S-Tier</strong>. Why are these the most effective choices to make people want to discover and visit your country? How will they capture a viewer's eye from across the room?
+            </p>
+          </div>
+        </div>
+        <textarea id="q1-response" class="textarea-field" placeholder="Explain your S-Tier reasoning in English using clear, persuasive vocabulary..." oninput="saveUserData()"></textarea>
+      </div>
+
+      <!-- Prompt 2: Cultural Elements Selection -->
+      <div class="question-block">
+        <div class="question-header">
+          <span class="question-badge">Q2</span>
+          <div>
+            <h3 class="question-title">Cultural Aspects Strategy (Curriculum Part B)</h3>
+            <p class="question-hint">
+              The project instructions require presenting <strong>at least 3 cultural aspects</strong>. Which 3 cultural elements (e.g. music/dance, famous person, traditional festival, clothing, monument, sports, fun fact) will you feature, and how will you write short English explanations rather than just a simple list?
+            </p>
+          </div>
+        </div>
+        <textarea id="q2-response" class="textarea-field" placeholder="List your 3 cultural aspects and draft a sample 1-2 sentence explanation in English for one of them..." oninput="saveUserData()"></textarea>
+      </div>
+
+      <!-- Prompt 3: Food & Culinary Showcase -->
+      <div class="question-block">
+        <div class="question-header">
+          <span class="question-badge">Q3</span>
+          <div>
+            <h3 class="question-title">Food &amp; Gastronomy Plan (Curriculum Part C)</h3>
+            <p class="question-hint">
+              Your poster must present the culinary traditions of your country (2 to 3 dishes and 1 typical drink). Where did you rank these elements, and what descriptive English adjectives will you use to make the specialties sound delicious?
+            </p>
+          </div>
+        </div>
+        <textarea id="q3-response" class="textarea-field" placeholder="Name the signature dish and drink you plan to include, and explain how you will introduce them..." oninput="saveUserData()"></textarea>
+      </div>
+
+      <!-- Prompt 4: Eliminating Clutter -->
+      <div class="question-block">
+        <div class="question-header">
+          <span class="question-badge">Q4</span>
+          <div>
+            <h3 class="question-title">Clutter Prevention &amp; Lower-Tier Cuts (D, E, F Tiers)</h3>
+            <p class="question-hint">
+              A great poster has clean spacing, visible titles, and zero clutter. Why did you demote or eliminate certain elements to D, E, or F Tier? How does omitting them help your poster maintain high visual impact?
+            </p>
+          </div>
+        </div>
+        <textarea id="q4-response" class="textarea-field" placeholder="Explain which elements you cut or demoted and why white space makes your poster stronger..." oninput="saveUserData()"></textarea>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Curriculum Rubric Modal -->
+  <div class="modal-backdrop" id="rubric-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="handleBackdropClick(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">
+          <i data-lucide="award" style="width: 20px; height: 20px; color: var(--secondary); vertical-align: middle; margin-right: 6px;"></i>
+          English Country Poster Guidelines
+        </h3>
+        <button type="button" class="modal-close-btn" onclick="closeRubricModal()" aria-label="Close modal">
+          <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div>
+          <h4 class="modal-section-title">The Challenge</h4>
+          <p style="margin: 0;">
+            Choose a country where English is one of the national or official languages and create an attractive, informative digital poster. <strong>Your poster should make people want to discover and visit your country!</strong>
+          </p>
+        </div>
+
+        <div>
+          <h4 class="modal-section-title">1) Essential Information</h4>
+          <ul class="modal-list">
+            <li><strong>Capital city</strong>: Clearly labeled, indicating the nation's political hub.</li>
+            <li><strong>National flag</strong>: Authentic colors, proportions, and symbolic crosses or emblems.</li>
+            <li><strong>National emblem / Coat of arms</strong>: Traditional crest or official motto.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="modal-section-title">2) Culture (Minimum 3 Aspects)</h4>
+          <p style="margin: 0 0 4px 0;">Present at least 3 cultural aspects. <em>Important: Do not simply make a list. Write short explanations in English.</em></p>
+          <ul class="modal-list">
+            <li>Music and dance traditions</li>
+            <li>Cinema and famous personalities</li>
+            <li>National sports and traditional games</li>
+            <li>Festivals, parades, and ancestral events</li>
+            <li>Traditional clothing and ceremonial textiles</li>
+            <li>Famous monuments, heritage landmarks, and architecture</li>
+            <li>Literature and surprising fun facts</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="modal-section-title">3) Food &amp; Gastronomy</h4>
+          <ul class="modal-list">
+            <li>2 to 3 traditional savory or sweet dishes.</li>
+            <li>One typical regional drink or beverage.</li>
+            <li>Short explanations highlighting flavors, ingredients, and cultural origin.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="modal-section-title">4) Language &amp; Style Rules</h4>
+          <ul class="modal-list">
+            <li><strong>Short sentences</strong> with punchy, accessible phrasing.</li>
+            <li><strong>Simple and precise vocabulary</strong> suited for an international travel poster.</li>
+            <li><strong>Clear and visible titles</strong> with strong typographic hierarchy.</li>
+            <li><strong>Correct spelling</strong> and grammar throughout.</li>
+            <li><strong>Original wording</strong>: Do not copy and paste long texts from the internet; use your own words!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-action btn-accent" onclick="closeRubricModal()">Got It, Let's Plan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Detail / Tips Modal -->
+  <div class="modal-backdrop" id="card-detail-modal" role="dialog" aria-modal="true" aria-labelledby="card-modal-title" onclick="handleCardBackdropClick(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="card-modal-title">Element Details</h3>
+        <button type="button" class="modal-close-btn" onclick="closeCardModal()" aria-label="Close modal">
+          <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" id="card-modal-body">
+        <!-- Injected dynamically -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-action" onclick="closeCardModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- API Shim Tag for Notebook OS State Persistence -->
+  <api-shim></api-shim>
+
+  <script>
+    /* ==========================================================================
+       DATA DEFINITIONS
+       Exactly the 12 poster elements specified by user request.
+       The 6 excluded items:
+         1. Country name
+         3. Population
+         4. Language spoken
+         6. Map showing location
+         17. Food pictures
+         18. Visuals and short explanations
+       have been strictly removed from ranking cards.
+       ========================================================================== */
+    const POSTER_ELEMENTS = [
+      {
+        id: `card-capital`,
+        title: `Capital City`,
+        category: `essential`,
+        categoryLabel: `Essential Info`,
+        icon: `building-2`,
+        desc: `The administrative heart and civic center of the nation.`,
+        tip: `State the capital prominently alongside an iconic photo or symbol. Viewers need to know where government and history converge.`,
+        example: `London (UK), Washington D.C. (USA), Ottawa (Canada), Canberra (Australia), Pretoria (South Africa), New Delhi (India).`
+      },
+      {
+        id: `card-flag`,
+        title: `National Flag`,
+        category: `essential`,
+        categoryLabel: `Essential Info`,
+        icon: `flag`,
+        desc: `Colors, crosses, stars, or emblem of national identity.`,
+        tip: `Place high on the poster for instant recognition. Briefly explain what colors or symbols stand for if you have room.`,
+        example: `Union Jack (UK), Stars & Stripes (USA), Maple Leaf (Canada), Southern Cross (Australia / NZ).`
+      },
+      {
+        id: `card-emblem`,
+        title: `National Emblem`,
+        category: `essential`,
+        categoryLabel: `Essential Info`,
+        icon: `shield`,
+        desc: `Official coat of arms, seal, or heraldic crest.`,
+        tip: `Adds historical gravitas and official prestige. Best placed near the header or footer as an elegant visual badge.`,
+        example: `Royal Coat of Arms (UK), Great Seal Bald Eagle (USA), Kangaroo & Emu Crest (Australia), Springbok / Protea (South Africa).`
+      },
+      {
+        id: `card-dish`,
+        title: `Traditional Dish`,
+        category: `food`,
+        categoryLabel: `Food & Drink`,
+        icon: `utensils`,
+        desc: `Savory or sweet culinary specialty beloved by locals.`,
+        tip: `Use delicious, sensory English adjectives (crispy, savory, aromatic, spiced). Food creates an instant emotional craving to visit!`,
+        example: `Fish & Chips / Shepherd's Pie (UK), Poutine (Canada), Meat Pie / Vegemite (Australia), Bobotie (South Africa), Jerk Chicken (Jamaica).`
+      },
+      {
+        id: `card-drink`,
+        title: `Traditional Drink`,
+        category: `food`,
+        categoryLabel: `Food & Drink`,
+        icon: `coffee`,
+        desc: `Iconic beverage, tea custom, or refreshing local specialty.`,
+        tip: `Explain the hospitality ritual around it (e.g. English Afternoon Tea, South African Rooibos, Jamaican Sorrel, Indian Chai).`,
+        example: `English Breakfast Tea, Canadian Apple Cider, Australian Flat White, South African Rooibos, Jamaican Ginger Beer.`
+      },
+      {
+        id: `card-monument`,
+        title: `Famous Monument / Landmark`,
+        category: `culture`,
+        categoryLabel: `Culture & Places`,
+        icon: `castle`,
+        desc: `World-renowned architectural wonder or natural site.`,
+        tip: `Your poster's premier visual hook! Describe why tourists flock to see it and its architectural or natural grandeur.`,
+        example: `Big Ben / Tower Bridge (UK), Statue of Liberty (USA), Table Mountain (South Africa), Sydney Opera House (Australia), Taj Mahal (India).`
+      },
+      {
+        id: `card-person`,
+        title: `Famous Person`,
+        category: `culture`,
+        categoryLabel: `Culture & People`,
+        icon: `user-check`,
+        desc: `Celebrated historical figure, author, athlete, or artist.`,
+        tip: `Connect their legacy directly to national character. Write 1-2 punchy sentences highlighting their worldwide impact.`,
+        example: `William Shakespeare (UK), Nelson Mandela (South Africa), Terry Fox (Canada), Steve Irwin (Australia), Usain Bolt (Jamaica).`
+      },
+      {
+        id: `card-clothing`,
+        title: `Traditional Clothing`,
+        category: `culture`,
+        categoryLabel: `Culture & Heritage`,
+        icon: `shirt`,
+        desc: `Ceremonial attire, regional textiles, or folk dress.`,
+        tip: `Adds vibrant colors and cultural depth. Describe materials (tartan wool, kente cloth, silk) and the events where it is worn.`,
+        example: `Scottish Tartan Kilt (UK), Cowboy boots & Stetson (USA), Madiba shirt (South Africa), Akubra hat & Driza-Bone (Australia).`
+      },
+      {
+        id: `card-festival`,
+        title: `Traditional Festival / Event`,
+        category: `culture`,
+        categoryLabel: `Culture & Celebrations`,
+        icon: `calendar-heart`,
+        desc: `Annual carnival, seasonal gathering, or national jubilee.`,
+        tip: `Showcases high energy and joyful community life. Mention the month it happens and what spectators experience.`,
+        example: `Notting Hill Carnival / Edinburgh Fringe (UK), Mardi Gras (USA), Calgary Stampede (Canada), Sydney Mardi Gras (Australia).`
+      },
+      {
+        id: `card-music`,
+        title: `Music / Dance`,
+        category: `culture`,
+        categoryLabel: `Culture & Arts`,
+        icon: `music`,
+        desc: `Signature musical rhythm, indigenous beat, or folk dance.`,
+        tip: `Music evokes atmosphere and youth culture. Mention famous instruments (bagpipes, steel drums) or iconic musical genres.`,
+        example: `British Rock / Bagpipe reels (UK), Reggae & Dancehall (Jamaica), Indigenous Haka / Corroboree (NZ/Australia), Amapiano (South Africa).`
+      },
+      {
+        id: `card-sport`,
+        title: `National Sport / Game`,
+        category: `culture`,
+        categoryLabel: `Culture & Leisure`,
+        icon: `trophy`,
+        desc: `Beloved athletic pastime drawing stadium crowds.`,
+        tip: `Sports reflect national pride and camaraderie. Mention iconic tournaments or teams that travelers can watch.`,
+        example: `Cricket / Football (UK), Ice Hockey (Canada), Rugby / Cricket (Australia & South Africa), Baseball / Basketball (USA).`
+      },
+      {
+        id: `card-funfact`,
+        title: `Fun Fact`,
+        category: `culture`,
+        categoryLabel: `Culture & Curiosity`,
+        icon: `sparkles`,
+        desc: `Surprising trivia, quirky record, or unique oddity.`,
+        tip: `Engages curiosity! An intriguing trivia snippet sticks in the viewer's memory long after they finish reading the poster.`,
+        example: `Canada has more lakes than the rest of the world combined; Australia is wider than the moon; UK postboxes were once green.`
+      }
+    ];
+
+    /* Application State */
+    let appState = {
+      studentName: ``,
+      classPeriod: ``,
+      country: `United Kingdom`,
+      customCountry: ``,
+      posterAngle: `Tourism & Discovery`,
+      tiers: {
+        S: [],
+        A: [],
+        B: [],
+        C: [],
+        D: [],
+        E: [],
+        F: [],
+        pool: POSTER_ELEMENTS.map(function(item) { return item.id; })
+      },
+      q1: ``,
+      q2: ``,
+      q3: ``,
+      q4: ``
+    };
+
+    let activeFilter = `all`;
+    let draggedCardId = null;
+
+    /* ==========================================================================
+       DRAG AND DROP HANDLERS (Defensive & Robust)
+       ========================================================================== */
+    function handleDragStart(e) {
+      draggedCardId = e.currentTarget.id;
+      e.dataTransfer.setData(`text/plain`, draggedCardId);
+      e.dataTransfer.effectAllowed = `move`;
+      e.currentTarget.classList.add(`is-dragging`);
+    }
+
+    function handleDragEnd(e) {
+      if (e.currentTarget) {
+        e.currentTarget.classList.remove(`is-dragging`);
+      }
+      draggedCardId = null;
+      document.querySelectorAll(`.tier-drop-zone, .pool-drop-zone`).forEach(function(zone) {
+        zone.classList.remove(`drag-active`);
+      });
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = `move`;
+      const zone = e.currentTarget;
+      if (zone && !zone.classList.contains(`drag-active`)) {
+        zone.classList.add(`drag-active`);
+      }
+    }
+
+    function handleDragLeave(e) {
+      const zone = e.currentTarget;
+      if (zone) {
+        zone.classList.remove(`drag-active`);
+      }
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      const zone = e.currentTarget;
+      if (zone) {
+        zone.classList.remove(`drag-active`);
+      }
+      const cardId = e.dataTransfer.getData(`text/plain`) || draggedCardId;
+      if (!cardId) return;
+
+      const targetTier = zone.getAttribute(`data-tier`);
+      if (!targetTier) return;
+
+      moveCardToTier(cardId, targetTier);
+    }
+
+    /* Move Card Logic */
+    function moveCardToTier(cardId, targetTier) {
+      // Remove from all existing tiers
+      const tierKeys = Object.keys(appState.tiers);
+      for (let i = 0; i < tierKeys.length; i++) {
+        const k = tierKeys[i];
+        appState.tiers[k] = appState.tiers[k].filter(function(id) {
+          return id !== cardId;
+        });
+      }
+
+      // Add to new tier
+      if (appState.tiers[targetTier]) {
+        appState.tiers[targetTier].push(cardId);
+      } else {
+        appState.tiers.pool.push(cardId);
+      }
+
+      renderBoard();
+      updateDashboardStats();
+      saveStateToShim();
+    }
+
+    /* Direct Dropdown Assignment (Mobile & Touch Accessible) */
+    function assignCardTier(cardId, targetTier) {
+      moveCardToTier(cardId, targetTier);
+    }
+
+    /* Filter Cards in Pool */
+    function filterCards(category, btnEl) {
+      activeFilter = category;
+      const chips = document.querySelectorAll(`.filter-chip`);
+      chips.forEach(function(chip) {
+        chip.classList.remove(`active`);
+      });
+      if (btnEl) btnEl.classList.add(`active`);
+
+      renderPool();
+    }
+
+    /* ==========================================================================
+       RENDERING LOGIC
+       ========================================================================== */
+    function renderBoard() {
+      const tiers = [`S`, `A`, `B`, `C`, `D`, `E`, `F`];
+      for (let i = 0; i < tiers.length; i++) {
+        const t = tiers[i];
+        const container = document.getElementById(`zone-` + t);
+        if (!container) continue;
+        container.innerHTML = ``;
+        const cardIds = appState.tiers[t] || [];
+        for (let j = 0; j < cardIds.length; j++) {
+          const cardData = POSTER_ELEMENTS.find(function(item) {
+            return item.id === cardIds[j];
+          });
+          if (cardData) {
+            container.appendChild(createCardElement(cardData, t));
+          }
+        }
+      }
+
+      renderPool();
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+    }
+
+    function renderPool() {
+      const poolZone = document.getElementById(`zone-pool`);
+      if (!poolZone) return;
+      poolZone.innerHTML = ``;
+
+      const poolIds = appState.tiers.pool || [];
+      const unrankedCountEl = document.getElementById(`unranked-count`);
+      if (unrankedCountEl) {
+        unrankedCountEl.textContent = poolIds.length.toString();
+      }
+
+      let visibleCount = 0;
+      for (let i = 0; i < poolIds.length; i++) {
+        const cardData = POSTER_ELEMENTS.find(function(item) {
+          return item.id === poolIds[i];
+        });
+        if (!cardData) continue;
+
+        if (activeFilter !== `all` && cardData.category !== activeFilter) {
+          continue;
+        }
+
+        visibleCount++;
+        poolZone.appendChild(createCardElement(cardData, `pool`));
+      }
+
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+    }
+
+    function createCardElement(data, currentTier) {
+      const card = document.createElement(`div`);
+      card.className = `element-card`;
+      card.id = data.id;
+      card.draggable = true;
+      card.setAttribute(`ondragstart`, `handleDragStart(event)`);
+      card.setAttribute(`ondragend`, `handleDragEnd(event)`);
+
+      const catClass = data.category === `essential` ? `cat-essential` : (data.category === `food` ? `cat-food` : `cat-culture`);
+
+      card.innerHTML = `
+        <div class="card-top">
+          <span class="card-category-tag ${catClass}">${data.categoryLabel}</span>
+          <button type="button" class="card-btn-info" onclick="openCardModal('${data.id}')" title="View poster tips & examples">
+            <i data-lucide="info" style="width: 14px; height: 14px;"></i>
+          </button>
+        </div>
+        <div class="card-main">
+          <div class="card-icon-box">
+            <i data-lucide="${data.icon}" style="width: 18px; height: 18px;"></i>
+          </div>
+          <h4 class="card-title">${data.title}</h4>
+        </div>
+        <p class="card-desc">${data.desc}</p>
+        <div class="card-controls">
+          <select class="card-tier-select" aria-label="Select Tier for ${data.title}" onchange="assignCardTier('${data.id}', this.value)">
+            <option value="pool" ${currentTier === `pool` ? `selected` : ``}>Unranked</option>
+            <option value="S" ${currentTier === `S` ? `selected` : ``}>S Tier (Essential)</option>
+            <option value="A" ${currentTier === `A` ? `selected` : ``}>A Tier (High Priority)</option>
+            <option value="B" ${currentTier === `B` ? `selected` : ``}>B Tier (Strong)</option>
+            <option value="C" ${currentTier === `C` ? `selected` : ``}>C Tier (Situational)</option>
+            <option value="D" ${currentTier === `D` ? `selected` : ``}>D Tier (Optional)</option>
+            <option value="E" ${currentTier === `E` ? `selected` : ``}>E Tier (Clutter Risk)</option>
+            <option value="F" ${currentTier === `F` ? `selected` : ``}>F Tier (Skip / Cut)</option>
+          </select>
+        </div>
+      `;
+
+      return card;
+    }
+
+    /* ==========================================================================
+       DASHBOARD METRICS & AUDIT
+       ========================================================================== */
+    function updateDashboardStats() {
+      const rankedCount = 12 - (appState.tiers.pool ? appState.tiers.pool.length : 0);
+      const progressPercent = Math.round((rankedCount / 12) * 100);
+
+      const progressValEl = document.getElementById(`stat-progress-val`);
+      const progressBarEl = document.getElementById(`stat-progress-bar-fill`);
+      const progressCaptionEl = document.getElementById(`stat-progress-caption`);
+      if (progressValEl) progressValEl.textContent = `${rankedCount} / 12`;
+      if (progressBarEl) progressBarEl.style.width = `${progressPercent}%`;
+      if (progressCaptionEl) {
+        progressCaptionEl.textContent = rankedCount === 12
+          ? `All 12 poster elements ranked! Ready for written justification.`
+          : `${12 - rankedCount} element(s) remaining in the unranked pool.`;
+      }
+
+      // Section B: Culture Quota (Culture cards in S or A tier)
+      const topTiers = (appState.tiers.S || []).concat(appState.tiers.A || []);
+      const cultureCount = topTiers.filter(function(id) {
+        const item = POSTER_ELEMENTS.find(function(el) { return el.id === id; });
+        return item && item.category === `culture`;
+      }).length;
+
+      const cultureValEl = document.getElementById(`stat-culture-val`);
+      const cultureBarEl = document.getElementById(`stat-culture-bar-fill`);
+      const cultureCaptionEl = document.getElementById(`stat-culture-caption`);
+      if (cultureValEl) {
+        cultureValEl.textContent = `${cultureCount} / 3`;
+        if (cultureCount >= 3) {
+          cultureValEl.className = `stat-number is-highlight`;
+        } else {
+          cultureValEl.className = `stat-number is-warning`;
+        }
+      }
+      if (cultureBarEl) {
+        const pct = Math.min(100, Math.round((cultureCount / 3) * 100));
+        cultureBarEl.style.width = `${pct}%`;
+      }
+      if (cultureCaptionEl) {
+        cultureCaptionEl.textContent = cultureCount >= 3
+          ? `Quota met! ${cultureCount} cultural aspects prioritized for your poster.`
+          : `Need at least 3 cultural aspects in S or A tier (currently ${cultureCount}).`;
+      }
+
+      // Section C: Food & Drink Check (Dish or Drink in S, A, or B tier)
+      const priorityTiers = (appState.tiers.S || []).concat(appState.tiers.A || []).concat(appState.tiers.B || []);
+      const foodCount = priorityTiers.filter(function(id) {
+        const item = POSTER_ELEMENTS.find(function(el) { return el.id === id; });
+        return item && item.category === `food`;
+      }).length;
+
+      const foodValEl = document.getElementById(`stat-food-val`);
+      const foodBarEl = document.getElementById(`stat-food-bar-fill`);
+      const foodCaptionEl = document.getElementById(`stat-food-caption`);
+      if (foodValEl) {
+        foodValEl.textContent = `${foodCount} / 2`;
+        if (foodCount >= 2) {
+          foodValEl.className = `stat-number is-highlight`;
+        } else {
+          foodValEl.className = `stat-number is-warning`;
+        }
+      }
+      if (foodBarEl) {
+        const pct = Math.min(100, Math.round((foodCount / 2) * 100));
+        foodBarEl.style.width = `${pct}%`;
+      }
+      if (foodCaptionEl) {
+        foodCaptionEl.textContent = foodCount >= 2
+          ? `Both culinary staples prioritized! High visitor appeal guaranteed.`
+          : `Include traditional dish and drink in S, A, or B tier.`;
+      }
+
+      // Section A: Essential Info Check (Capital, Flag, Emblem)
+      const essentialCount = priorityTiers.filter(function(id) {
+        const item = POSTER_ELEMENTS.find(function(el) { return el.id === id; });
+        return item && item.category === `essential`;
+      }).length;
+
+      const essentialValEl = document.getElementById(`stat-essential-val`);
+      const essentialBarEl = document.getElementById(`stat-essential-bar-fill`);
+      const essentialCaptionEl = document.getElementById(`stat-essential-caption`);
+      if (essentialValEl) {
+        essentialValEl.textContent = `${essentialCount} / 3`;
+      }
+      if (essentialBarEl) {
+        const pct = Math.min(100, Math.round((essentialCount / 3) * 100));
+        essentialBarEl.style.width = `${pct}%`;
+      }
+      if (essentialCaptionEl) {
+        essentialCaptionEl.textContent = `${essentialCount} essential anchors placed in top priority tiers.`;
+      }
+    }
+
+    /* ==========================================================================
+       PRESETS & ACTIONS
+       ========================================================================== */
+    function loadPreset(type) {
+      if (type === `balanced`) {
+        appState.tiers = {
+          S: [`card-capital`, `card-monument`, `card-dish`],
+          A: [`card-flag`, `card-festival`, `card-drink`],
+          B: [`card-person`, `card-music`, `card-sport`],
+          C: [`card-clothing`, `card-funfact`],
+          D: [`card-emblem`],
+          E: [],
+          F: [],
+          pool: []
+        };
+      } else if (type === `culture`) {
+        appState.tiers = {
+          S: [`card-festival`, `card-monument`, `card-music`],
+          A: [`card-clothing`, `card-person`, `card-dish`],
+          B: [`card-flag`, `card-capital`, `card-drink`],
+          C: [`card-sport`, `card-funfact`],
+          D: [`card-emblem`],
+          E: [],
+          F: [],
+          pool: []
+        };
+      }
+      renderBoard();
+      updateDashboardStats();
+      saveStateToShim();
+    }
+
+    function resetToPool() {
+      appState.tiers = {
+        S: [],
+        A: [],
+        B: [],
+        C: [],
+        D: [],
+        E: [],
+        F: [],
+        pool: POSTER_ELEMENTS.map(function(item) { return item.id; })
+      };
+      renderBoard();
+      updateDashboardStats();
+      saveStateToShim();
+    }
+
+    /* Country Change */
+    function handleCountryChange() {
+      const select = document.getElementById(`select-country`);
+      const customGroup = document.getElementById(`group-custom-country`);
+      if (!select) return;
+
+      appState.country = select.value;
+      if (select.value === `Other`) {
+        if (customGroup) customGroup.style.display = `flex`;
+      } else {
+        if (customGroup) customGroup.style.display = `none`;
+        appState.customCountry = ``;
+      }
+      saveUserData();
+    }
+
+    function saveUserData() {
+      const nameInput = document.getElementById(`input-student-name`);
+      const classInput = document.getElementById(`input-class-period`);
+      const customInput = document.getElementById(`input-custom-country`);
+      const angleSelect = document.getElementById(`select-poster-angle`);
+      const q1Input = document.getElementById(`q1-response`);
+      const q2Input = document.getElementById(`q2-response`);
+      const q3Input = document.getElementById(`q3-response`);
+      const q4Input = document.getElementById(`q4-response`);
+
+      if (nameInput) appState.studentName = nameInput.value;
+      if (classInput) appState.classPeriod = classInput.value;
+      if (customInput) appState.customCountry = customInput.value;
+      if (angleSelect) appState.posterAngle = angleSelect.value;
+      if (q1Input) appState.q1 = q1Input.value;
+      if (q2Input) appState.q2 = q2Input.value;
+      if (q3Input) appState.q3 = q3Input.value;
+      if (q4Input) appState.q4 = q4Input.value;
+
+      saveStateToShim();
+    }
+
+    /* Modal Controls */
+    function openRubricModal() {
+      const modal = document.getElementById(`rubric-modal`);
+      if (modal) modal.classList.add(`is-open`);
+    }
+
+    function closeRubricModal() {
+      const modal = document.getElementById(`rubric-modal`);
+      if (modal) modal.classList.remove(`is-open`);
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === `rubric-modal`) {
+        closeRubricModal();
+      }
+    }
+
+    function openCardModal(cardId) {
+      const data = POSTER_ELEMENTS.find(function(item) { return item.id === cardId; });
+      if (!data) return;
+
+      const titleEl = document.getElementById(`card-modal-title`);
+      const bodyEl = document.getElementById(`card-modal-body`);
+      if (titleEl) titleEl.textContent = data.title;
+
+      if (bodyEl) {
+        bodyEl.innerHTML = `
+          <div>
+            <span class="card-category-tag cat-${data.category === 'essential' ? 'essential' : (data.category === 'food' ? 'food' : 'culture')}">${data.categoryLabel}</span>
+          </div>
+          <div>
+            <h4 class="modal-section-title">Overview</h4>
+            <p style="margin: 0;">${data.desc}</p>
+          </div>
+          <div>
+            <h4 class="modal-section-title">Poster Design Strategy</h4>
+            <p style="margin: 0;">${data.tip}</p>
+          </div>
+          <div>
+            <h4 class="modal-section-title">Real-World Examples</h4>
+            <p style="margin: 0; font-style: italic;">${data.example}</p>
+          </div>
+        `;
+      }
+
+      const modal = document.getElementById(`card-detail-modal`);
+      if (modal) modal.classList.add(`is-open`);
+    }
+
+    function closeCardModal() {
+      const modal = document.getElementById(`card-detail-modal`);
+      if (modal) modal.classList.remove(`is-open`);
+    }
+
+    function handleCardBackdropClick(e) {
+      if (e.target.id === `card-detail-modal`) {
+        closeCardModal();
+      }
+    }
+
+    /* Export Summary Functions */
+    function generateTextSummary() {
+      const countryName = appState.country === `Other` ? (appState.customCountry || `Custom Country`) : appState.country;
+      const student = appState.studentName || `Anonymous Student`;
+      const period = appState.classPeriod || `Not specified`;
+
+      let summary = `========================================================\n`;
+      summary += `COUNTRY POSTER TIER LIST & DESIGN WORKSHEET\n`;
+      summary += `========================================================\n\n`;
+      summary += `STUDENT: ${student}\n`;
+      summary += `CLASS/PERIOD: ${period}\n`;
+      summary += `CHOSEN ENGLISH-SPEAKING COUNTRY: ${countryName}\n`;
+      summary += `POSTER THEME / ANGLE: ${appState.posterAngle}\n\n`;
+      summary += `--------------------------------------------------------\n`;
+      summary += `TIER LIST RANKINGS (S to F)\n`;
+      summary += `--------------------------------------------------------\n`;
+
+      const tiers = [`S`, `A`, `B`, `C`, `D`, `E`, `F`];
+      for (let i = 0; i < tiers.length; i++) {
+        const t = tiers[i];
+        const cardIds = appState.tiers[t] || [];
+        const names = cardIds.map(function(id) {
+          const item = POSTER_ELEMENTS.find(function(el) { return el.id === id; });
+          return item ? item.title : id;
+        });
+        summary += `[Tier ${t}]: ${names.length > 0 ? names.join(`, `) : `(None)`}\n`;
+      }
+
+      const unranked = (appState.tiers.pool || []).map(function(id) {
+        const item = POSTER_ELEMENTS.find(function(el) { return el.id === id; });
+        return item ? item.title : id;
+      });
+      summary += `[Unranked]: ${unranked.length > 0 ? unranked.join(`, `) : `(None - All 12 items ranked!)`}\n\n`;
+
+      summary += `--------------------------------------------------------\n`;
+      summary += `WRITTEN JUSTIFICATION & STRATEGY\n`;
+      summary += `--------------------------------------------------------\n\n`;
+      summary += `Q1: S-Tier Visual Hook & Tourist Appeal:\n${appState.q1 || `[No response entered]`}\n\n`;
+      summary += `Q2: 3 Cultural Aspects Plan (Section B):\n${appState.q2 || `[No response entered]`}\n\n`;
+      summary += `Q3: Food & Gastronomy Plan (Section C):\n${appState.q3 || `[No response entered]`}\n\n`;
+      summary += `Q4: Clutter Prevention & Demotions (D/E/F Tiers):\n${appState.q4 || `[No response entered]`}\n\n`;
+      summary += `========================================================\n`;
+      return summary;
+    }
+
+    function copyWorksheetSummary() {
+      const summary = generateTextSummary();
+      navigator.clipboard.writeText(summary).then(function() {
+        alert(`Worksheet summary copied to clipboard! You can paste it into your homework submission or notes.`);
+      }).catch(function() {
+        // Fallback for clipboard
+        const ta = document.createElement(`textarea`);
+        ta.value = summary;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand(`copy`);
+        document.body.removeChild(ta);
+        alert(`Worksheet summary copied to clipboard!`);
+      });
+    }
+
+    function downloadWorksheetFile() {
+      const summary = generateTextSummary();
+      const countryClean = (appState.country === `Other` ? (appState.customCountry || `Country`) : appState.country).replace(/\s+/g, `_`);
+      const filename = `Poster_TierList_${countryClean}.txt`;
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: summary,
+          contentType: `text/plain`,
+          encoding: `UTF-8`,
+          filename: filename
+        });
+      } else {
+        const blob = new Blob([summary], { type: `text/plain;charset=utf-8` });
+        const link = document.createElement(`a`);
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+
+    /* ==========================================================================
+       STATE PERSISTENCE (Notebook OS Shim API)
+       ========================================================================== */
+    const LOCAL_SAVE_KEY = `country-poster-tier-list-v1`;
+
+    async function saveStateToShim() {
+      // Keep each student's work in that student's own browser on the hosted site.
+      try {
+        localStorage.setItem(LOCAL_SAVE_KEY, JSON.stringify(appState));
+      } catch (err) {
+        console.warn(`Could not save locally:`, err);
+      }
+
+      // Preserve Notebook's native persistence when the activity runs there.
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        try {
+          await window.notebookAppApi.setAppState({ appState: appState });
+        } catch (err) {
+          console.warn(`Could not save state to Notebook:`, err);
+        }
+      }
+    }
+
+    async function loadStateFromShim() {
+      let restoredState = null;
+
+      // Prefer Notebook's saved state when available; otherwise use this browser's copy.
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && saved.appState) restoredState = saved.appState;
+        } catch (err) {
+          console.warn(`Could not load state from Notebook:`, err);
+        }
+      }
+      if (!restoredState) {
+        try {
+          const localSaved = localStorage.getItem(LOCAL_SAVE_KEY);
+          if (localSaved) restoredState = JSON.parse(localSaved);
+        } catch (err) {
+          console.warn(`Could not load local save:`, err);
+        }
+      }
+
+      if (restoredState) {
+        try {
+          appState = Object.assign({}, appState, restoredState);
+
+            // Populate form inputs
+            const nameInput = document.getElementById(`input-student-name`);
+            const classInput = document.getElementById(`input-class-period`);
+            const selectCountry = document.getElementById(`select-country`);
+            const customInput = document.getElementById(`input-custom-country`);
+            const customGroup = document.getElementById(`group-custom-country`);
+            const selectAngle = document.getElementById(`select-poster-angle`);
+            const q1Input = document.getElementById(`q1-response`);
+            const q2Input = document.getElementById(`q2-response`);
+            const q3Input = document.getElementById(`q3-response`);
+            const q4Input = document.getElementById(`q4-response`);
+
+            if (nameInput && appState.studentName) nameInput.value = appState.studentName;
+            if (classInput && appState.classPeriod) classInput.value = appState.classPeriod;
+            if (selectCountry && appState.country) {
+              selectCountry.value = appState.country;
+              if (appState.country === `Other` && customGroup) {
+                customGroup.style.display = `flex`;
+              }
+            }
+            if (customInput && appState.customCountry) customInput.value = appState.customCountry;
+            if (selectAngle && appState.posterAngle) selectAngle.value = appState.posterAngle;
+            if (q1Input && appState.q1) q1Input.value = appState.q1;
+            if (q2Input && appState.q2) q2Input.value = appState.q2;
+            if (q3Input && appState.q3) q3Input.value = appState.q3;
+            if (q4Input && appState.q4) q4Input.value = appState.q4;
+        } catch (err) {
+          console.warn(`Could not restore saved activity:`, err);
+        }
+      }
+
+      // Populate form inputs from the restored state.
+      const nameInput = document.getElementById(`input-student-name`);
+      const classInput = document.getElementById(`input-class-period`);
+      const selectCountry = document.getElementById(`select-country`);
+      const customInput = document.getElementById(`input-custom-country`);
+      const customGroup = document.getElementById(`group-custom-country`);
+      const selectAngle = document.getElementById(`select-poster-angle`);
+      const q1Input = document.getElementById(`q1-response`);
+      const q2Input = document.getElementById(`q2-response`);
+      const q3Input = document.getElementById(`q3-response`);
+      const q4Input = document.getElementById(`q4-response`);
+
+      if (nameInput) nameInput.value = appState.studentName || ``;
+      if (classInput) classInput.value = appState.classPeriod || ``;
+      if (selectCountry) selectCountry.value = appState.country || `United Kingdom`;
+      if (customInput) customInput.value = appState.customCountry || ``;
+      if (customGroup && appState.country === `Other`) customGroup.style.display = `flex`;
+      if (selectAngle) selectAngle.value = appState.posterAngle || `Tourism & Discovery`;
+      if (q1Input) q1Input.value = appState.q1 || ``;
+      if (q2Input) q2Input.value = appState.q2 || ``;
+      if (q3Input) q3Input.value = appState.q3 || ``;
+      if (q4Input) q4Input.value = appState.q4 || ``;
+
+      renderBoard();
+      updateDashboardStats();
+
+      // App ready lifecycle call
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        try {
+          window.notebookAppApi.notifyAppReady();
+        } catch (e) {
+          console.warn(`notifyAppReady error:`, e);
+        }
+      }
+    }
+
+    /* Initialize on DOMContentLoaded */
+    document.addEventListener(`DOMContentLoaded`, function() {
+      loadStateFromShim();
+    });
+  </script>
+</body>
+</html>
